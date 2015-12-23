@@ -4,6 +4,8 @@ Funcao: Rodar Jogo da velha;
 Autores: Jorge Edson Ribeiro da Silva Neto, Joao Gabriel Gouveia de Souza Brito, Bruna Mayumi Hori, Silas Wesley Maia Marinho;
 Contatos: jorge.ed.ribeiro00@gmail.com & gabriel.gouveia@live.com, brunahori19@gmail.com, silas.wesley@hotmail.com;
 Orientador: Profº Dr. Ruben Carlo Benante;
+
+Obs: Licença da GNU 2.0
  */
 
 
