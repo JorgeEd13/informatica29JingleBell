@@ -11,13 +11,24 @@ Obs: Licença da GNU 2.0
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+int modo_jogo=0, dificuldade=0;
 
-int modo_jogo, dificuldade;
+int nivelfacil(int tab[3][3], int vez)
+{
+    srand(time(NULL));
+    int r = rand()%9; //sorteia uma posição aleatoria de 0 a 8
+    
+        while(verificaJogadaValida(tab, r)==0)
+        { //caso a posição ja tenha sido escolhida, vai decrementando ate achar uma posicao
+                    r--;
+                             if(r==-1) //caso extrapole a primeira posição, vai pra ultima pra começar a busca
+                                             r=8;
+                                 }
 
-int nivelfacil(int tab[3][3], int vez){
-    return 0;
-}
-int nivelmedio(int tab[3][3], int vez){
+    return r;
+    }
+nivelmedio(int tab[3][3], int vez){
     return 0;
 }
 int niveldificil(int tab[3][3], int vez){
@@ -30,6 +41,15 @@ int verificarJogo(int tab[3][3])
     //retorna 1 caso o jogo tenha terminado e o jogador 1 ganhou
     //retorna 2 caso o jogo tenha terminado e o jogador 2 ganhou
     //retorna 3 caso o jogo terminou e deu velha
+    return 0;
+}
+
+int verificaJogadaValida(int tab[3][3], int pos)
+{
+    int x=pos/3, y=pos%3;
+    if(tab[x][y]==0)
+        return 1;
+   
     return 0;
 }
 
