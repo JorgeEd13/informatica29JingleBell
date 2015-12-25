@@ -42,9 +42,24 @@ nivelmedio(int tab[3][3], int vez)
 
             return r;
 }
-int niveldificil(int tab[3][3], int vez){
-    return 0;
+int niveldificil(int tab[3][3], int vez)
+{
+    srand(time(NULL));
+    int r = rand()%9;
+
+   while(verificaJogadaValida(tab, r)==0)
+   {
+       r--;
+       if(r==-1)
+           r=8;
+   }                                 
+       return r;    
+          
 }
+
+
+
+
 
 int verificarJogo(int tab[3][3])
 {
