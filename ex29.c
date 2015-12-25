@@ -19,17 +19,28 @@ int nivelfacil(int tab[3][3], int vez)
     srand(time(NULL));
     int r = rand()%9; //sorteia uma posição aleatoria de 0 a 8
     
-        while(verificaJogadaValida(tab, r)==0)
-        { //caso a posição ja tenha sido escolhida, vai decrementando ate achar uma posicao
+        while(verificaJogadaValida(tab, r)==0) /*caso a posicao ja tenha sido escolhida, decrementa ate achar um posicao*/
+        { 
                     r--;
                              if(r==-1) //caso extrapole a primeira posição, vai pra ultima pra começar a busca
                                              r=8;
-                                 }
-
-    return r;
+        }
+         
+            return r;
     }
-nivelmedio(int tab[3][3], int vez){
-    return 0;
+nivelmedio(int tab[3][3], int vez)
+{
+  
+    srand(time(NULL));
+    int r = rand()%9;
+
+    while(verificaJogadaValida(tab, r)==0){
+        r--;
+        if(r==-1)
+            r=8;
+                                }
+
+            return r;
 }
 int niveldificil(int tab[3][3], int vez){
     return 0;
