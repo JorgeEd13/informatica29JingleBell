@@ -6,7 +6,7 @@ Contatos: jorge.ed.ribeiro00@gmail.com & gabriel.gouveia@live.com, brunahori19@g
 Orientador: Profº Dr. Ruben Carlo Benante;
 
 Obs: Licença da GNU 2.0
- */
+*/
 
 
 #include <stdio.h>
@@ -18,56 +18,83 @@ int nivelfacil(int tab[3][3], int vez)
 {
     srand(time(NULL));
     int r = rand()%9; //sorteia uma posição aleatoria de 0 a 8
-    
-        while(verificaJogadaValida(tab, r)==0) /*caso a posicao ja tenha sido escolhida, decrementa ate achar um posicao*/
-        { 
-                    r--;
-                             if(r==-1) //caso extrapole a primeira posição, vai pra ultima pra começar a busca
-                                             r=8;
-        }
-         
-            return r;
+
+    while(verificaJogadaValida(tab, r)==0) /*caso a posicao ja tenha sido escolhida, decrementa ate achar um posicao*/
+    { 
+        r--;
+        if(r==-1) //caso extrapole a primeira posição, vai pra ultima pra começar a busca
+            r=8;
     }
+
+    return r;
+}
 nivelmedio(int tab[3][3], int vez)
 {
-  
+
     srand(time(NULL));
     int r = rand()%9;
 
-    while(verificaJogadaValida(tab, r)==0){
+    while(verificaJogadaValida(tab, r)==0)
+    {
         r--;
         if(r==-1)
             r=8;
-                                }
+    }
 
-            return r;
+    return r;
 }
 int niveldificil(int tab[3][3], int vez)
 {
     srand(time(NULL));
     int r = rand()%9;
 
-   while(verificaJogadaValida(tab, r)==0)
-   {
-       r--;
-       if(r==-1)
-           r=8;
-   }                                 
-       return r;    
-          
+    while(verificaJogadaValida(tab, r)==0)
+    {
+        r--;
+        if(r==-1)
+            r=8;
+    }                                 
+    return r;    
+
 }
-
-
-
-
 
 int verificarJogo(int tab[3][3])
 {
+    int i,j,status=3;
+
+    for(i=0;i<3;i++){
+        for(j=0;j<3;j++){
+            if(tab[i][j]==0){
+                status=0;
+            }
+        }
+    }
+
+    if((tab[0][0] == 1 && tab[0][1] == 1 && tab[0][2] == 1)
+            || (tab[1][0] == 1 && tab[1][1] == 1 && tab[1][2] == 1)
+            ||(tab[2][0] == 1 && tab[2][1] == 1 && tab[2][2] == 1)
+            ||(tab[0][0] == 1 && tab[1][0] == 1 && tab[2][0] == 1)
+            ||(tab[0][1] == 1 && tab[1][1] == 1 && tab[2][1] == 1)
+            ||(tab[2][0] == 1 && tab[2][1] == 1 && tab[2][2] == 1)
+            ||(tab[0][0] == 1 && tab[1][1] == 1 && tab[2][2] == 1)
+            ||(tab[2][0] == 1 && tab[1][1] == 1 && tab[0][2] == 1))
+        status =1;
+
+    if((tab[0][0] == -1 && tab[0][1] == -1 && tab[0][2] == -1)
+            || (tab[1][0] == -1 && tab[1][1] == -1 && tab[1][2] == -1)
+            ||(tab[2][0] == -1 && tab[2][1] == -1 && tab[2][2] == -1)
+            ||(tab[0][0] == -1 && tab[1][0] == -1 && tab[2][0] == -1)
+            ||(tab[0][1] == -1 && tab[1][1] == -1 && tab[2][1] == -1)
+            ||(tab[2][0] == -1 && tab[2][1] == -1 && tab[2][2] == -1)
+            ||(tab[0][0] == -1 && tab[1][1] == -1 && tab[2][2] == -1)
+            ||(tab[2][0] == -1 && tab[1][1] == -1 && tab[0][2] == -1))
+        status =2;
+
     //retorna 0 caso o jogo não tenha terminado
     //retorna 1 caso o jogo tenha terminado e o jogador 1 ganhou
     //retorna 2 caso o jogo tenha terminado e o jogador 2 ganhou
     //retorna 3 caso o jogo terminou e deu velha
-    return 0;
+    return status;
 }
 
 int verificaJogadaValida(int tab[3][3], int pos)
@@ -75,7 +102,7 @@ int verificaJogadaValida(int tab[3][3], int pos)
     int x=pos/3, y=pos%3;
     if(tab[x][y]==0)
         return 1;
-   
+
     return 0;
 }
 
