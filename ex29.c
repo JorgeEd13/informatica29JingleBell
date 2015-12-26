@@ -108,6 +108,33 @@ int verificaJogadaValida(int tab[3][3], int pos)
 
 void imprimeTabuleiro(int tab[3][3])
 {
+    int i,j;
+
+    printf("\n\n");
+
+    for(i=0;i<3;i++){
+        for(j=0;j<3;j++){
+            if(tab[i][j]==1){
+                printf(" X ");
+            }else if(tab[i][j]==-1) {
+                printf(" O ");
+            }else{
+                printf("   ");
+            }
+
+            if(j==0 || j==1){
+                printf("|");
+            }else if(j==2){
+                printf("\n");
+            }
+        }
+        if(i==0 || i==1)
+            printf("---+---+---\n");
+
+    }
+
+    printf("\n\n");
+
     //Imprimir formatado o tabuleiro
 }
 
