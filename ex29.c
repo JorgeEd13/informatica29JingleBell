@@ -34,21 +34,47 @@ int nivelfacil(int tab[3][3], int vez)
 
 int nivelmedio(int tab[3][3], int vez)
 {
+    /*Se a posição atual da matriz impedir o adversario de ganhar, ou me levar a vitoria, jogo nessa posição*/
 
-    srand(time(NULL));
-    int r = rand()%9;
-
-    while(verificaJogadaValida(tab, r)==0)
-    {
-        r--;
-        if(r==-1)
-            r=8;
+    if(tab[0][0] == 0 && ((tab[0][1]==tab[0][2]&&tab[0][1]!=0&&tab[0][2]!=0)||
+                (tab[1][0]==tab[2][0]&&tab[1][0]!=0&&tab[2][0]!=0)||
+                (tab[1][1]==tab[2][2]&&tab[1][1]!=0&&tab[2][2]!=0)))
+    return 0;
+    else if(tab[0][1] == 0 && ((tab[0][0]==tab[0][2]&&tab[0][0]!=0&&tab[0][2]!=0)||
+                (tab[1][1]==tab[2][1]&&tab[1][1]!=0&&tab[2][1]!=0)))
+    return 1;
+    else if(tab[0][2] == 0 && ((tab[0][0]==tab[0][1]&&tab[0][0]!=0&&tab[0][1]!=0)||
+                (tab[1][2]==tab[2][2]&&tab[1][2]!=0&&tab[2][2]!=0)||
+                (tab[1][1]==tab[2][0]&&tab[1][1]!=0&&tab[2][0]!=0)))
+    return 2;
+    else if(tab[1][0] == 0 && ((tab[1][1]==tab[1][2]&&tab[1][1]!=0&&tab[1][2]!=0)||
+                (tab[0][0]==tab[2][0]&&tab[0][0]!=0&&tab[2][0]!=0)))
+    return 3;
+    else if(tab[1][1] == 0 && ((tab[1][0]==tab[1][2]&&tab[1][0]!=0&&tab[1][2]!=0)||
+                (tab[0][1]==tab[2][1]&&tab[0][1]!=0&&tab[2][1]!=0)||
+                (tab[0][0]==tab[2][2]&&tab[0][0]!=0&&tab[2][2]!=0)||
+                (tab[0][2]==tab[2][0]&&tab[0][2]!=0&&tab[2][0]!=0)))
+    return 4;
+    else if(tab[1][2] == 0 && ((tab[1][0]==tab[1][1]&&tab[1][0]!=0&&tab[1][1]!=0)||
+                (tab[0][2]==tab[2][2]&&tab[0][2]!=0&&tab[2][2]!=0)))
+    return 5;
+    else if(tab[2][0] == 0 && ((tab[0][0]==tab[1][0]&&tab[0][0]!=0&&tab[1][0]!=0)||
+                (tab[2][1]==tab[2][2]&&tab[2][1]!=0&&tab[2][2]!=0)||
+                (tab[0][2]==tab[1][1]&&tab[0][2]!=0&&tab[1][1]!=0)))
+    return 6;
+    else if(tab[2][1] == 0 && ((tab[2][0]==tab[2][2]&&tab[2][0]!=0&&tab[2][2]!=0)||
+                (tab[0][1]==tab[1][1]&&tab[0][1]!=0&&tab[1][1]!=0)))
+    return 7;
+    else if(tab[2][2] == 0 && ((tab[2][0]==tab[2][1]&&tab[2][0]!=0&&tab[2][1]!=0)||
+                (tab[0][2]==tab[1][2]&&tab[0][2]!=0&&tab[1][2]!=0)||
+                (tab[0][0]==tab[1][1]&&tab[0][0]!=0&&tab[1][1]!=0)))
+    return 8;
+    else
+    return nivelfacil(tab, vez);
     }
 
-    return r;
-}
 
-int niveldificil(int tab[3][3], int vez)
+niveldificil(int tab[3][3], int vez)
 {
 
     srand(time(NULL));
@@ -104,12 +130,12 @@ int verificarJogo(int tab[3][3])
 
 
 
-       // retorna 0 caso o jogo não tenha terminado
-       // retorna 1 caso o jogo tenha terminado e o jogador 1 ganhou
-       // retorna 2 caso o jogo tenha terminado e o jogador 2 ganhou
-       // retorna 3 caso o jogo terminou e deu velha
+    // retorna 0 caso o jogo não tenha terminado
+    // retorna 1 caso o jogo tenha terminado e o jogador 1 ganhou
+    // retorna 2 caso o jogo tenha terminado e o jogador 2 ganhou
+    // retorna 3 caso o jogo terminou e deu velha
 
-        return status;
+    return status;
 }
 
 int verificaJogadaValida(int tab[3][3], int pos){
@@ -188,7 +214,7 @@ void jogadaHumano(int tab[3][3], int jogador)
         printf("Jogador %d: Digite uma posicao para jogar de 0 a 8 que nao esteja ocupada:\n", jogador_Hum);
         scanf("%d", &jogada);
     }
-        while(verificaJogadaValida(tab, jogada) == 0);
+    while(verificaJogadaValida(tab, jogada) == 0);
 
     fazerJogada(tab,jogada);
 
@@ -225,7 +251,7 @@ int main()
             scanf("%d", &modo_jogo);
             printf("\n\n");
         }
-         while(modo_jogo<1 && modo_jogo>3);
+        while(modo_jogo<1 && modo_jogo>3);
 
         if(modo_jogo ==3)
         {
@@ -237,7 +263,7 @@ int main()
                 comeca=getchar();
                 printf("\n\n");
             }
-               while(comeca!='c' && comeca!='h');
+            while(comeca!='c' && comeca!='h');
 
         }
 
