@@ -148,6 +148,20 @@ niveldificil(int tab[3][3], int vez)
 
     if(jogada!=9)
         return jogada;
+    srand(time(NULL));
+    int r = rand()%5; //sorteia uma das 4 diagonais
+    int vetorDiagonais[5]={0,2,4,6,8};//vetor com a posição das diagonais e do centro
+    int cont=1;
+    while(verificaJogadaValida(tab, vetorDiagonais[r])==0){ //caso a posição ja tenha sido escolhida, vai decrementando ate achar uma posicao
+        r--;
+        cont++;
+        if(r==-1) //caso extrapole a primeira posição, vai pra ultima pra começar a busca
+            r=4;
+        if(cont>=5)// se ele tentou jogar nas diagonais e no centro e não funcionou, joga aleatorio
+            return nivelfacil(tab, vez);
+    }
+
+
 }
 
 int verificarJogo(int tab[3][3])
