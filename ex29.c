@@ -233,7 +233,7 @@ int main()
             do
             {
                 printf("Quem comeca:\nh- Humano\nc- computador\n");
-                fflush(stdin);//limpar o buffer da ultima escolha
+                fflush(stdin)||__fpurge(stdin);//limpar o buffer da ultima escolha
                 comeca=getchar();
                 printf("\n\n");
             }
@@ -281,7 +281,7 @@ int main()
         do
         {
             printf("Deseja jogar novamente:\ns- sim\nn- nao\n");
-            fflush(stdin);//limpar o buffer da ultima escolha
+            fflush(stdin)||__fpurge(stdin);//limpar o buffer da ultima escolha
             jogarNovamente=getchar();
         }
         while(jogarNovamente!='s' && jogarNovamente!='n');
