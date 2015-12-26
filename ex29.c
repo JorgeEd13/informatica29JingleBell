@@ -32,12 +32,14 @@ int nivelfacil(int tab[3][3], int vez)
     return r;
 }
 
-int nivelmedio(int tab[3][3], int vez){
+int nivelmedio(int tab[3][3], int vez)
+{
 
     srand(time(NULL));
     int r = rand()%9;
 
-    while(verificaJogadaValida(tab, r)==0){
+    while(verificaJogadaValida(tab, r)==0)
+    {
         r--;
         if(r==-1)
             r=8;
@@ -46,12 +48,14 @@ int nivelmedio(int tab[3][3], int vez){
     return r;
 }
 
-int niveldificil(int tab[3][3], int vez){
+int niveldificil(int tab[3][3], int vez)
+{
 
     srand(time(NULL));
     int r = rand()%9;
 
-    while(verificaJogadaValida(tab, r)==0){
+    while(verificaJogadaValida(tab, r)==0)
+    {
         r--;
         if(r==-1)
             r=8;
@@ -60,13 +64,17 @@ int niveldificil(int tab[3][3], int vez){
     return r;
 }
 
-int verificarJogo(int tab[3][3]){
+int verificarJogo(int tab[3][3])
+{
 
     int i,j,status=3;
 
-    for(i=0;i<3;i++){
-        for(j=0;j<3;j++){
-            if(tab[i][j]==0){
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+        {
+            if(tab[i][j]==0)
+            {
                 status=0;
             }
         }
@@ -130,19 +138,29 @@ void imprimeTabuleiro(int tab[3][3]){
 
     printf("\n\n");
 
-    for(i=0;i<3;i++){
-        for(j=0;j<3;j++){
-            if(tab[i][j]==1){
+    for(i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+        {
+            if(tab[i][j]==1)
+            {
                 printf(" X ");
-            }else if(tab[i][j]==-1) {
+            }
+            else if(tab[i][j]==-1) 
+            {
                 printf(" O ");
-            }else{
+            }
+            else
+            {
                 printf("   ");
             }
 
-            if(j==0 || j==1){
+            if(j==0 || j==1)
+            {
                 printf("|");
-            }else if(j==2){
+            }
+            else if(j==2)
+            {
                 printf("\n");
             }
         }
@@ -155,7 +173,8 @@ void imprimeTabuleiro(int tab[3][3]){
 
 }
 
-void jogadaHumano(int tab[3][3], int jogador){
+void jogadaHumano(int tab[3][3], int jogador)
+{
 
     int jogador_Hum =1;
 
@@ -164,58 +183,74 @@ void jogadaHumano(int tab[3][3], int jogador){
     else
         jogador_Hum = 1;
 
-    do{
+    do
+    {
         printf("Jogador %d: Digite uma posicao para jogar de 0 a 8 que nao esteja ocupada:\n", jogador_Hum);
         scanf("%d", &jogada);
-    }while(verificaJogadaValida(tab, jogada) == 0);
+    }
+        while(verificaJogadaValida(tab, jogada) == 0);
 
     fazerJogada(tab,jogada);
 
 }
 
-void jogadaPC(int dificuldade, int tab[3][3], int vez){
+void jogadaPC(int dificuldade, int tab[3][3], int vez)
+{
 
-    switch(dificuldade){
-        case 1:jogada= nivelfacil(tab, vez);break;
-        case 2:jogada= nivelmedio(tab, vez);break;
-        case 3:jogada= niveldificil(tab, vez);break;
+    switch(dificuldade)
+    {
+        case 1:jogada= nivelfacil(tab, vez);
+               break;
+        case 2:jogada= nivelmedio(tab, vez);
+               break;
+        case 3:jogada= niveldificil(tab, vez);
+               break;
     }
 
 
     fazerJogada(tab,jogada);
 }
 
-int main(){
+int main()
+{
 
-    do{
-        system("cls"); //Limpa a tela
+    do
+    {
         int tabuleiro[3][3] = {{0,0,0},{0,0,0},{0,0,0}};
         g_vez=1;
 
-        do{
+        do
+        {
             printf("Digite o modo de jogo:\n1- Humano contra Humano\n2- Computador contra Computador\n3- Humano contra Computador\n");
             scanf("%d", &modo_jogo);
             printf("\n\n");
-        }while(modo_jogo<1 && modo_jogo>3);
+        }
+         while(modo_jogo<1 && modo_jogo>3);
 
-        if(modo_jogo ==3){
+        if(modo_jogo ==3)
+        {
 
-            do{
+            do
+            {
                 printf("Quem comeca:\nh- Humano\nc- computador\n");
                 fflush(stdin);//limpar o buffer da ultima escolha
                 comeca=getchar();
                 printf("\n\n");
-            }while(comeca!='c' && comeca!='h');
+            }
+               while(comeca!='c' && comeca!='h');
 
         }
 
-        if(modo_jogo ==2 || modo_jogo ==3){
+        if(modo_jogo ==2 || modo_jogo ==3)
+        {
 
-            do{
+            do
+            {
                 printf("Digite a dificuldade:\n1-facil\n2-medio\n3-dificil\n");
                 scanf("%d", &dificuldade);
                 printf("\n\n");
-            }while(dificuldade<1 && dificuldade>3);
+            }
+            while(dificuldade<1 && dificuldade>3);
 
         }
 
@@ -235,21 +270,25 @@ int main(){
 
         }
 
-        switch(verificarJogo(tabuleiro)){
+        switch(verificarJogo(tabuleiro))
+        {
             case 1: printf("Jogador 1 ganhou\n");break;
             case 2: printf("Jogador 2 ganhou\n");break;
             case 3: printf("Deu velha\n");break;
         }
 
 
-        do{
+        do
+        {
             printf("Deseja jogar novamente:\ns- sim\nn- nao\n");
             fflush(stdin);//limpar o buffer da ultima escolha
             jogarNovamente=getchar();
-        }while(jogarNovamente!='s' && jogarNovamente!='n');
+        }
+        while(jogarNovamente!='s' && jogarNovamente!='n');
 
 
-    }while(jogarNovamente=='s');
+    }
+    while(jogarNovamente=='s');
 
     return 0;
 }
