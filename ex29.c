@@ -39,55 +39,115 @@ int nivelmedio(int tab[3][3], int vez)
     if(tab[0][0] == 0 && ((tab[0][1]==tab[0][2]&&tab[0][1]!=0&&tab[0][2]!=0)||
                 (tab[1][0]==tab[2][0]&&tab[1][0]!=0&&tab[2][0]!=0)||
                 (tab[1][1]==tab[2][2]&&tab[1][1]!=0&&tab[2][2]!=0)))
-    return 0;
+        return 0;
     else if(tab[0][1] == 0 && ((tab[0][0]==tab[0][2]&&tab[0][0]!=0&&tab[0][2]!=0)||
                 (tab[1][1]==tab[2][1]&&tab[1][1]!=0&&tab[2][1]!=0)))
-    return 1;
+        return 1;
     else if(tab[0][2] == 0 && ((tab[0][0]==tab[0][1]&&tab[0][0]!=0&&tab[0][1]!=0)||
                 (tab[1][2]==tab[2][2]&&tab[1][2]!=0&&tab[2][2]!=0)||
                 (tab[1][1]==tab[2][0]&&tab[1][1]!=0&&tab[2][0]!=0)))
-    return 2;
+        return 2;
     else if(tab[1][0] == 0 && ((tab[1][1]==tab[1][2]&&tab[1][1]!=0&&tab[1][2]!=0)||
                 (tab[0][0]==tab[2][0]&&tab[0][0]!=0&&tab[2][0]!=0)))
-    return 3;
+        return 3;
     else if(tab[1][1] == 0 && ((tab[1][0]==tab[1][2]&&tab[1][0]!=0&&tab[1][2]!=0)||
                 (tab[0][1]==tab[2][1]&&tab[0][1]!=0&&tab[2][1]!=0)||
                 (tab[0][0]==tab[2][2]&&tab[0][0]!=0&&tab[2][2]!=0)||
                 (tab[0][2]==tab[2][0]&&tab[0][2]!=0&&tab[2][0]!=0)))
-    return 4;
+        return 4;
     else if(tab[1][2] == 0 && ((tab[1][0]==tab[1][1]&&tab[1][0]!=0&&tab[1][1]!=0)||
                 (tab[0][2]==tab[2][2]&&tab[0][2]!=0&&tab[2][2]!=0)))
-    return 5;
+        return 5;
     else if(tab[2][0] == 0 && ((tab[0][0]==tab[1][0]&&tab[0][0]!=0&&tab[1][0]!=0)||
                 (tab[2][1]==tab[2][2]&&tab[2][1]!=0&&tab[2][2]!=0)||
                 (tab[0][2]==tab[1][1]&&tab[0][2]!=0&&tab[1][1]!=0)))
-    return 6;
+        return 6;
     else if(tab[2][1] == 0 && ((tab[2][0]==tab[2][2]&&tab[2][0]!=0&&tab[2][2]!=0)||
                 (tab[0][1]==tab[1][1]&&tab[0][1]!=0&&tab[1][1]!=0)))
-    return 7;
+        return 7;
     else if(tab[2][2] == 0 && ((tab[2][0]==tab[2][1]&&tab[2][0]!=0&&tab[2][1]!=0)||
                 (tab[0][2]==tab[1][2]&&tab[0][2]!=0&&tab[1][2]!=0)||
                 (tab[0][0]==tab[1][1]&&tab[0][0]!=0&&tab[1][1]!=0)))
-    return 8;
+        return 8;
     else
-    return nivelfacil(tab, vez);
-    }
+        return nivelfacil(tab, vez);
+}
 
 
 niveldificil(int tab[3][3], int vez)
 {
+    /*Se a posição atual da matriz impedir o adversario de ganhar e ao mesmo tempo outra posição da matriz me fizer ganha prefiro jogar na outra posição*/
+    int jogada=9;
 
-    srand(time(NULL));
-    int r = rand()%9;
+    if(tab[0][0] == 0 && ((tab[0][1]==vez*-1 && tab[0][2]==vez*-1)||
+                (tab[1][0]==vez*-1 &&tab[2][0]==vez*-1 )||
+                (tab[1][1]==vez*-1&&tab[2][2]==vez*-1)))
+        jogada=0;
+    if(tab[0][1] == 0 && ((tab[0][0]==vez*-1&&tab[0][2]==vez*-1)||
+                (tab[1][1]==vez*-1&&tab[2][1]==vez*-1)))
+        jogada=1;
+    if(tab[0][2] == 0 && ((tab[0][0]==vez*-1&&tab[0][1]==vez*-1)||
+                (tab[1][2]==vez*-1&&tab[2][2]==vez*-1)||
+                (tab[1][1]==vez*-1&&tab[2][0]==vez*-1)))
+        jogada=2;
+    if(tab[1][0] == 0 && ((tab[1][1]==vez*-1&&tab[1][2]==vez*-1)||
+                (tab[0][0]==vez*-1&&tab[2][0]==vez*-1)))
+        jogada=3;
+    if(tab[1][1] == 0 && ((tab[1][0]==vez*-1&&tab[1][2]==vez*-1)||
+                (tab[0][1]==vez*-1&&tab[2][1]==vez*-1)||
+                (tab[0][0]==vez*-1&&tab[2][2]==vez*-1)||
+                (tab[0][2]==vez*-1&&tab[2][0]==vez*-1)))
+        jogada=4;
+    if(tab[1][2] == 0 && ((tab[1][0]==vez*-1&&tab[1][1]==vez*-1)||
+                (tab[0][2]==vez*-1&&tab[2][2]==vez*-1)))
+        jogada=5;
+    if(tab[2][0] == 0 && ((tab[0][0]==vez*-1&&tab[1][0]==vez*-1)||
+                (tab[2][1]==vez*-1&&tab[2][2]==vez*-1)||
+                (tab[0][2]==vez*-1&&tab[1][1]==vez*-1)))
+        jogada=6;
+    if(tab[2][1] == 0 && ((tab[2][0]==vez*-1&&tab[2][2]==vez*-1)||
+                (tab[0][1]==vez*-1&&tab[1][1]==vez*-1)))
+        jogada=7;
+    if(tab[2][2] == 0 && ((tab[2][0]==vez*-1&&tab[2][1]==vez*-1)||
+                (tab[0][2]==vez*-1&&tab[1][2]==vez*-1)||
+                (tab[0][0]==vez*-1&&tab[1][1]==vez*-1)))
+        jogada=8;
+    if(tab[0][0] == 0 && ((tab[0][1]==vez && tab[0][2]==vez)||
+                (tab[1][0]==vez &&tab[2][0]==vez)||
+                (tab[1][1]==vez &&tab[2][2]==vez)))
+        return 0;
+    if(tab[0][1] == 0 && ((tab[0][0]==vez&&tab[0][2]==vez)||
+                (tab[1][1]==vez&&tab[2][1]==vez)))
+        return 1;
+    if(tab[0][2] == 0 && ((tab[0][0]==vez&&tab[0][1]==vez)||
+                (tab[1][2]==vez&&tab[2][2]==vez)||
+                (tab[1][1]==vez&&tab[2][0]==vez)))
+        return 2;
+    if(tab[1][0] == 0 && ((tab[1][1]==vez&&tab[1][2]==vez)||
+                (tab[0][0]==vez&&tab[2][0]==vez)))
+        return 3;
+    if(tab[1][1] == 0 && ((tab[1][0]==vez&&tab[1][2]==vez)||
+                (tab[0][1]==vez&&tab[2][1]==vez)||
+                (tab[0][0]==vez&&tab[2][2]==vez)||
+                (tab[0][2]==vez&&tab[2][0]==vez)))
+        return 4;
+    if(tab[1][2] == 0 && ((tab[1][0]==vez&&tab[1][1]==vez)||
+                (tab[0][2]==vez&&tab[2][2]==vez)))
+        return 5;
+    if(tab[2][0] == 0 && ((tab[0][0]==vez&&tab[1][0]==vez)||
+                (tab[2][1]==vez&&tab[2][2]==vez)||
+                (tab[0][2]==vez&&tab[1][1]==vez)))
+        return 6;
+    if(tab[2][1] == 0 && ((tab[2][0]==vez&&tab[2][2]==vez)||
+                (tab[0][1]==vez&&tab[1][1]==vez)))
+        return 7;
+    if(tab[2][2] == 0 && ((tab[2][0]==vez&&tab[2][1]==vez)||
+                (tab[0][2]==vez&&tab[1][2]==vez)||
+                (tab[0][0]==vez&&tab[1][1]==vez)))
+        return 8;
 
-    while(verificaJogadaValida(tab, r)==0)
-    {
-        r--;
-        if(r==-1)
-            r=8;
-    }
-
-    return r;
+    if(jogada!=9)
+        return jogada;
 }
 
 int verificarJogo(int tab[3][3])
