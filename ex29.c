@@ -12,7 +12,7 @@ Obs: Licença da GNU 2.0
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-int modo_jogo=0, dificuldade=0;
+int modo_jogo=0, dificuldade=0, g_vez=0;
 
 int nivelfacil(int tab[3][3], int vez)
 {
@@ -106,7 +106,18 @@ int verificaJogadaValida(int tab[3][3], int pos)
     return 0;
 }
 
-void imprimeTabuleiro(int tab[3][3])
+void fazerJogada(int tab[3][3], int pos){
+    int x=pos/3, y=pos%3;
+
+    tab[x][y]= g_vez;
+
+    if(g_vez ==1)
+        g_vez=-1;
+    else
+        g_vez=1;
+}
+
+void imprimeTabuleiro(int tab[3][3]) //imprimir tabuleiro
 {
     int i,j;
 
@@ -135,7 +146,6 @@ void imprimeTabuleiro(int tab[3][3])
 
     printf("\n\n");
 
-    //Imprimir formatado o tabuleiro
 }
 
 
@@ -167,5 +177,4 @@ int main(void)
 
     return 0;
 }
-
 
