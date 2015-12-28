@@ -4,6 +4,8 @@ Funcao: Rodar Jogo da velha;
 Autores: Jorge Edson Ribeiro da Silva Neto, Joao Gabriel Gouveia de Souza Brito, Bruna Mayumi Hori, Silas Wesley Maia Marinho;
 Contatos: jorge.ed.ribeiro00@gmail.com & gabriel.gouveia@live.com, brunahori19@gmail.com, silas.wesley@hotmail.com;
 Orientador: Profº Dr. Ruben Carlo Benante;
+Compile com:
+   $ gcc ex29.c -o ex29.x -std=c99
 
 Obs: Licença da GNU 2.0
 */
@@ -12,6 +14,27 @@ Obs: Licença da GNU 2.0
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <locale.h>
+#include <wchar.h>
+
+
+/* Bordas UTF 8 */
+
+#define WUL L'\u2518' /* ^VU2518 ┘ */
+#define WDL L'\u2510' /* ^VU2510 ┐ */
+#define WDR L'\u250c' /* ^VU250c ┌ */
+#define WUR L'\u2514' /* ^VU2514 └ */
+#define WVH L'\u253c' /* ^VU253c ┼ */
+#define WHH L'\u2500' /* ^VU2500 ─ */
+#define WVR L'\u251c' /* ^VU251c ├ */
+#define WVL L'\u2524' /* ^VU2524 ┤ */
+#define WUH L'\u2534' /* ^VU2534 ┴ */
+#define WDF L'\u252c' /* ^VU252c ┬ */
+#define WVV L'\u2502' /* ^VU2502 │ */
+#define WGL L'\u2571' /* ^VU2571 ╱ */
+#define WGR L'\u2572' /* ^VU2572 ╲ */
+#define WGX L'\u2573' /* ^VU2573 ╳ */
+
 
 
 int modo_jogo=0, dificuldade=0, g_vez=1, jogada=0,jogador=1;
@@ -244,20 +267,20 @@ void imprimeTabuleiro(int tab[3][3]){
         {
             if(tab[i][j]==1)
             {
-                printf(" X ");
+                printf("X");
             }
             else if(tab[i][j]==-1) 
             {
-                printf(" O ");
+                printf("O");
             }
             else
             {
-                printf("   ");
+                printf(" ");
             }
 
             if(j==0 || j==1)
             {
-                printf("|");
+                printf("%lc",WVV);
             }
             else if(j==2)
             {
@@ -265,7 +288,8 @@ void imprimeTabuleiro(int tab[3][3]){
             }
         }
         if(i==0 || i==1)
-            printf("---+---+---\n");
+            printf("%lc%lc%lc%lc%lc\n", WHH, WVH, WHH, WVH, WHH);
+
 
     }
 
@@ -313,7 +337,7 @@ void jogadaPC(int dificuldade, int tab[3][3], int vez)
 
 int main()
 {
-
+    setlocale(LC_ALL, "");
     do
     {
         int tabuleiro[3][3] = {{0,0,0},{0,0,0},{0,0,0}};
