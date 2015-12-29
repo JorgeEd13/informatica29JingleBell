@@ -44,11 +44,11 @@ int nivelfacil(int tab[3][3], int vez)
 {
 
     srand(time(NULL));
-    int r = rand()%9; //sorteia uma posição aleatoria de 0 a 8
+    int r = rand()%9; /*sorteia uma posição aleatoria de 0 a 8*/
 
-    while(verificaJogadaValida(tab, r)==0){ //caso a posição ja tenha sido escolhida, vai decrementando ate achar uma posicao
+    while(verificaJogadaValida(tab, r)==0){ /*caso a posição ja tenha sido escolhida, vai decrementando ate achar uma posicao*/
         r--;
-        if(r==-1) //caso extrapole a primeira posição, vai pra ultima pra começar a busca
+        if(r==-1) /*caso extrapole a primeira posição, vai pra ultima pra começar a busca*/
             r=8;
     }
 
@@ -172,15 +172,15 @@ niveldificil(int tab[3][3], int vez)
     if(jogada!=9)
         return jogada;
     srand(time(NULL));
-    int r = rand()%5; //sorteia uma das 4 diagonais
-    int vetorDiagonais[5]={0,2,4,6,8};//vetor com a posição das diagonais e do centro
+    int r = rand()%5; /*sorteia uma das 4 diagonais*/
+    int vetorDiagonais[5]={0,2,4,6,8};/*vetor com a posição das diagonais e do centro*/
     int cont=1;
-    while(verificaJogadaValida(tab, vetorDiagonais[r])==0){ //caso a posição ja tenha sido escolhida, vai decrementando ate achar uma posicao
+    while(verificaJogadaValida(tab, vetorDiagonais[r])==0){ /*caso a posição ja tenha sido escolhida, vai decrementando ate achar uma posicao*/
         r--;
         cont++;
-        if(r==-1) //caso extrapole a primeira posição, vai pra ultima pra começar a busca
+        if(r==-1) /*caso extrapole a primeira posição, vai pra ultima pra começar a busca*/
             r=4;
-        if(cont>=5)// se ele tentou jogar nas diagonais e no centro e não funcionou, joga aleatorio
+        if(cont>=5)/* se ele tentou jogar nas diagonais e no centro e não funcionou, joga aleatorio*/
             return nivelfacil(tab, vez);
     }
 
@@ -227,10 +227,10 @@ int verificarJogo(int tab[3][3])
 
 
 
-    // retorna 0 caso o jogo não tenha terminado
-    // retorna 1 caso o jogo tenha terminado e o jogador 1 ganhou
-    // retorna 2 caso o jogo tenha terminado e o jogador 2 ganhou
-    // retorna 3 caso o jogo terminou e deu velha
+    /* retorna 0 caso o jogo não tenha terminado */
+    /* retorna 1 caso o jogo tenha terminado e o jogador 1 ganhou*/
+    /* retorna 2 caso o jogo tenha terminado e o jogador 2 ganhou */
+    /* retorna 3 caso o jogo terminou e deu velha */
 
     return status;
 }
@@ -357,7 +357,7 @@ int main()
             do
             {
                 printf("Quem comeca:\nh- Humano\nc- computador\n");
-                fflush(stdin)||__fpurge(stdin);//limpar o buffer da ultima escolha
+                fflush(stdin)||__fpurge(stdin); /*limpar o buffer da ultima escolha*/
                 comeca=getchar();
                 printf("\n\n");
             }
@@ -406,7 +406,7 @@ int main()
         do
         {
             printf("Deseja jogar novamente:\ns- sim\nn- nao\n");
-            fflush(stdin)||__fpurge(stdin);//limpar o buffer da ultima escolha
+            fflush(stdin)||__fpurge(stdin);/*limpar o buffer da ultima escolha*/
             jogarNovamente=getchar();
         }
         while(jogarNovamente!='s' && jogarNovamente!='n');
