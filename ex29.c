@@ -63,37 +63,47 @@ int nivelmedio(int tab[3][3], int vez)
                 (tab[1][0]==tab[2][0]&&tab[1][0]!=0&&tab[2][0]!=0)||
                 (tab[1][1]==tab[2][2]&&tab[1][1]!=0&&tab[2][2]!=0)))
         return 0;
+    
     else if(tab[0][1] == 0 && ((tab[0][0]==tab[0][2]&&tab[0][0]!=0&&tab[0][2]!=0)||
                 (tab[1][1]==tab[2][1]&&tab[1][1]!=0&&tab[2][1]!=0)))
         return 1;
+    
     else if(tab[0][2] == 0 && ((tab[0][0]==tab[0][1]&&tab[0][0]!=0&&tab[0][1]!=0)||
                 (tab[1][2]==tab[2][2]&&tab[1][2]!=0&&tab[2][2]!=0)||
                 (tab[1][1]==tab[2][0]&&tab[1][1]!=0&&tab[2][0]!=0)))
         return 2;
+    
     else if(tab[1][0] == 0 && ((tab[1][1]==tab[1][2]&&tab[1][1]!=0&&tab[1][2]!=0)||
                 (tab[0][0]==tab[2][0]&&tab[0][0]!=0&&tab[2][0]!=0)))
         return 3;
+    
     else if(tab[1][1] == 0 && ((tab[1][0]==tab[1][2]&&tab[1][0]!=0&&tab[1][2]!=0)||
                 (tab[0][1]==tab[2][1]&&tab[0][1]!=0&&tab[2][1]!=0)||
                 (tab[0][0]==tab[2][2]&&tab[0][0]!=0&&tab[2][2]!=0)||
                 (tab[0][2]==tab[2][0]&&tab[0][2]!=0&&tab[2][0]!=0)))
         return 4;
+    
     else if(tab[1][2] == 0 && ((tab[1][0]==tab[1][1]&&tab[1][0]!=0&&tab[1][1]!=0)||
                 (tab[0][2]==tab[2][2]&&tab[0][2]!=0&&tab[2][2]!=0)))
         return 5;
+    
     else if(tab[2][0] == 0 && ((tab[0][0]==tab[1][0]&&tab[0][0]!=0&&tab[1][0]!=0)||
                 (tab[2][1]==tab[2][2]&&tab[2][1]!=0&&tab[2][2]!=0)||
                 (tab[0][2]==tab[1][1]&&tab[0][2]!=0&&tab[1][1]!=0)))
         return 6;
+    
     else if(tab[2][1] == 0 && ((tab[2][0]==tab[2][2]&&tab[2][0]!=0&&tab[2][2]!=0)||
                 (tab[0][1]==tab[1][1]&&tab[0][1]!=0&&tab[1][1]!=0)))
         return 7;
+
     else if(tab[2][2] == 0 && ((tab[2][0]==tab[2][1]&&tab[2][0]!=0&&tab[2][1]!=0)||
                 (tab[0][2]==tab[1][2]&&tab[0][2]!=0&&tab[1][2]!=0)||
                 (tab[0][0]==tab[1][1]&&tab[0][0]!=0&&tab[1][1]!=0)))
         return 8;
+ 
     else
         return nivelfacil(tab, vez);
+
 }
 
 
@@ -139,31 +149,40 @@ niveldificil(int tab[3][3], int vez)
                 (tab[1][0]==vez &&tab[2][0]==vez)||
                 (tab[1][1]==vez &&tab[2][2]==vez)))
         return 0;
+    
     if(tab[0][1] == 0 && ((tab[0][0]==vez&&tab[0][2]==vez)||
                 (tab[1][1]==vez&&tab[2][1]==vez)))
         return 1;
+    
     if(tab[0][2] == 0 && ((tab[0][0]==vez&&tab[0][1]==vez)||
                 (tab[1][2]==vez&&tab[2][2]==vez)||
                 (tab[1][1]==vez&&tab[2][0]==vez)))
         return 2;
+    
     if(tab[1][0] == 0 && ((tab[1][1]==vez&&tab[1][2]==vez)||
                 (tab[0][0]==vez&&tab[2][0]==vez)))
         return 3;
+    
     if(tab[1][1] == 0 && ((tab[1][0]==vez&&tab[1][2]==vez)||
                 (tab[0][1]==vez&&tab[2][1]==vez)||
                 (tab[0][0]==vez&&tab[2][2]==vez)||
                 (tab[0][2]==vez&&tab[2][0]==vez)))
         return 4;
+    
     if(tab[1][2] == 0 && ((tab[1][0]==vez&&tab[1][1]==vez)||
                 (tab[0][2]==vez&&tab[2][2]==vez)))
+    
         return 5;
+   
     if(tab[2][0] == 0 && ((tab[0][0]==vez&&tab[1][0]==vez)||
                 (tab[2][1]==vez&&tab[2][2]==vez)||
                 (tab[0][2]==vez&&tab[1][1]==vez)))
         return 6;
+    
     if(tab[2][1] == 0 && ((tab[2][0]==vez&&tab[2][2]==vez)||
                 (tab[0][1]==vez&&tab[1][1]==vez)))
         return 7;
+ 
     if(tab[2][2] == 0 && ((tab[2][0]==vez&&tab[2][1]==vez)||
                 (tab[0][2]==vez&&tab[1][2]==vez)||
                 (tab[0][0]==vez&&tab[1][1]==vez)))
@@ -235,7 +254,8 @@ int verificarJogo(int tab[3][3])
     return status;
 }
 
-int verificaJogadaValida(int tab[3][3], int pos){
+int verificaJogadaValida(int tab[3][3], int pos)
+{
     int x=pos/3, y=pos%3;
 
     if(tab[x][y]==0)
@@ -245,7 +265,8 @@ int verificaJogadaValida(int tab[3][3], int pos){
 
 }
 
-void fazerJogada(int tab[3][3], int pos){
+void fazerJogada(int tab[3][3], int pos)
+{
     int x=pos/3, y=pos%3;
 
     tab[x][y]= g_vez;
@@ -256,7 +277,8 @@ void fazerJogada(int tab[3][3], int pos){
         g_vez=1;
 }
 
-void imprimeTabuleiro(int tab[3][3]){
+void imprimeTabuleiro(int tab[3][3])
+{
     int i,j;
 
     printf("\n\n");
@@ -335,7 +357,7 @@ void jogadaPC(int dificuldade, int tab[3][3], int vez)
     fazerJogada(tab,jogada);
 }
 
-int main()
+int main(void)
 {
     setlocale(LC_ALL, "");
     do
